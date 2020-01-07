@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>  
 
+// X-Axis legth
 #define X_SIZE 75
-//path relative from userhome
+// path relative from userhome
 #define filepath ".battery_plot"
 
 /*
@@ -18,6 +19,7 @@ void print_seperation_line(){
 }
 
 void main(){
+	// Open file
 	chdir(getenv("HOME"));
 	FILE* file = fopen(filepath, "r");
 	if(file == NULL){
@@ -25,10 +27,13 @@ void main(){
 		return;
 	}
 
+
+	// Create space for graph
 	char plot[20][X_SIZE+1];
 	int x_axis = 0;
 	
-	//Initialize graph with " "
+	
+	// Initialize graph with " "
 	for(int a = 0; a<20; a++){
 		for(int i=0; i<X_SIZE; i++){
 			plot[a][i] = ' ';
@@ -36,7 +41,8 @@ void main(){
 		plot[a][X_SIZE] = '\0';
 	}
 	
-	//Plot file content in graph
+	
+	// Plot file content in graph
 	int current = 0;
 	while(fscanf(file, "%d", &current) != EOF){
 		for(int i = 0; i<20; i++){
@@ -50,7 +56,8 @@ void main(){
 		if(x_axis >=X_SIZE) break;
 	}
 	
-	//Output
+	
+	// Output
 	printf("\n");
 	print_seperation_line();
 	for(int i=0; i<20; i++){
