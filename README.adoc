@@ -18,4 +18,4 @@ To show the *graph*:
 
 
 
-*NOTICE* that it will take some time until the plot is visible since data is collected only once every 5 minutes. At first your plot will be empty.
+IMPORTANT: that it will take some time until the plot is visible since data is collected only once every 5 minutes. At first your plot will be empty.
