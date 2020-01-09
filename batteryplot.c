@@ -11,8 +11,7 @@
 	Draw a line of length X_SIZE
 */
 void print_seperation_line(){
-	printf(" ");
-	for(int i=0; i<X_SIZE; i++){
+	for(int i=0; i<X_SIZE-1; i++){
 		printf("-");
 	}
 	printf("\n");
@@ -59,10 +58,12 @@ void main(){
 	
 	// Output
 	printf("\n");
+	printf("100%% ");
 	print_seperation_line();
 	for(int i=0; i<20; i++){
 		printf("|  %s\n", plot[i]);
 	}
+	printf("0%% --");
 	print_seperation_line();
 	printf("\n");
 }
