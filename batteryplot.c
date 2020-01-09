@@ -6,9 +6,7 @@
 // path relative from userhome
 #define filepath ".battery_plot"
 
-/*
-	Draw a line of length X_SIZE
-*/
+
 void print_seperation_line(int length){
 	for(int i=0; i<length; i++){
 		printf("-");
@@ -41,6 +39,8 @@ void main(){
 		return;
 	}
 	
+	
+	
 	// Dynamic windowsize
 	struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
@@ -48,11 +48,10 @@ void main(){
     int WINSIZE_COL = w.ws_col;
     int skip_first_data = wordcount - (WINSIZE_COL-1);
 
-	// Create space for graph
-	char plot[WINSIZE_ROW][WINSIZE_COL];
 	
 	
 	// Initialize graph with " "
+	char plot[WINSIZE_ROW][WINSIZE_COL];
 	for(int a = 0; a<WINSIZE_ROW; a++){
 		for(int i=0; i<WINSIZE_COL-1; i++){
 			plot[a][i] = ' ';
@@ -60,12 +59,15 @@ void main(){
 		plot[a][WINSIZE_COL-1] = '\0';
 	}
 	
+	
+	
+	
 	// Skip old data
 	int tmp;
 	for(int i=0; i<skip_first_data; i++){
 		fscanf(file, "%d", &tmp);
 	}
-	// Plot file content in graph
+	// Plot graph
 	int current = 0;
 	int x_axis = 0;
 	while(fscanf(file, "%d", &current) != EOF){
@@ -78,6 +80,8 @@ void main(){
 		x_axis ++;
 		if(x_axis >= WINSIZE_COL) break;
 	}
+	
+	
 	
 	
 	// Output
