@@ -2,8 +2,8 @@
 
 while true; do
 	# Chop file if it gets too long
-	if [[ $(wc -l ~/.battery_plot | awk '{print $1}') -ge 75 ]]; then
-		f=$(tail -n 75 ~/.battery_plot)
+	if [[ $(wc -l ~/.battery_plot | awk '{print $1}') -ge 500 ]]; then
+		f=$(tail -n 100 ~/.battery_plot)
 		echo "$f" > ~/.battery_plot
 	fi
 	

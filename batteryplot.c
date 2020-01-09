@@ -16,21 +16,37 @@ void print_seperation_line(int length){
 	printf("\n");
 }
 
+int countWords(char* filename){
+	FILE* file = fopen(filename, "r");
+	if(file == NULL){
+		printf("ERROR: No such file: ~/%s\n", filepath);
+		exit(-1);
+	}
+	int tmp;
+	int words = 0;
+	while(fscanf(file, "%d", &tmp) != EOF){
+		words ++;
+	}
+	fclose(file);
+	return words;
+}
+
 void main(){
 	// Open file
 	chdir(getenv("HOME"));
+	int wordcount = countWords(filepath);
 	FILE* file = fopen(filepath, "r");
 	if(file == NULL){
 		printf("ERROR: No such file: ~/%s\n", filepath);
 		return;
 	}
 	
+	// Dynamic windowsize
 	struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-
     int WINSIZE_ROW = w.ws_row-3; //two lines for seperation, one for new shell-line
     int WINSIZE_COL = w.ws_col;
-
+    int skip_first_data = wordcount - (WINSIZE_COL-1);
 
 	// Create space for graph
 	char plot[WINSIZE_ROW][WINSIZE_COL];
@@ -44,7 +60,11 @@ void main(){
 		plot[a][WINSIZE_COL-1] = '\0';
 	}
 	
-	
+	// Skip old data
+	int tmp;
+	for(int i=0; i<skip_first_data; i++){
+		fscanf(file, "%d", &tmp);
+	}
 	// Plot file content in graph
 	int current = 0;
 	int x_axis = 0;
@@ -68,4 +88,5 @@ void main(){
 	}
 	printf("0%% ");
 	print_seperation_line(WINSIZE_COL - 3);
+	fclose(file);
 }
