@@ -85,7 +85,7 @@ void main(){
 	
 	
 	// Output
-	printf("100%% ");
+	printf("\x1b[36m100%% ");
 	print_seperation_line(WINSIZE_COL - 5);
 	
 	// First 50% green
@@ -104,8 +104,8 @@ void main(){
 		printf(" %s\n", plot[i]);
 	}
 		
-	printf("\x1b[0m"); // Reset color
-	printf("0%% ");
+	printf("\x1b[36m0%% ");
 	print_seperation_line(WINSIZE_COL - 3);
+	printf("\x1b[0m"); // Reset color
 	fclose(file);
 }
