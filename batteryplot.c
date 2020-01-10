@@ -87,9 +87,11 @@ void main(){
 	// Output
 	printf("100%% ");
 	print_seperation_line(WINSIZE_COL - 5);
+	printf("\x1b[33m"); // Set color yellow
 	for(int i=0; i<WINSIZE_ROW; i++){
 		printf(" %s\n", plot[i]);
 	}
+	printf("\x1b[0m"); // Reset color
 	printf("0%% ");
 	print_seperation_line(WINSIZE_COL - 3);
 	fclose(file);
