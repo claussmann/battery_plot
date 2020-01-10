@@ -87,10 +87,23 @@ void main(){
 	// Output
 	printf("100%% ");
 	print_seperation_line(WINSIZE_COL - 5);
-	printf("\x1b[33m"); // Set color yellow
-	for(int i=0; i<WINSIZE_ROW; i++){
+	
+	// First 50% green
+	printf("\x1b[32m"); // Set color green
+	for(int i=0; i<(int)(WINSIZE_ROW * 0.5); i++){
 		printf(" %s\n", plot[i]);
 	}
+	// 50% - 20% yellow
+	printf("\x1b[33m"); // Set color green
+	for(int i=WINSIZE_ROW * 0.5; i<(int)(WINSIZE_ROW * 0.8); i++){
+		printf(" %s\n", plot[i]);
+	}
+	// Last 30% red
+	printf("\x1b[31m"); // Set color green
+	for(int i=WINSIZE_ROW * 0.8; i<WINSIZE_ROW; i++){
+		printf(" %s\n", plot[i]);
+	}
+		
 	printf("\x1b[0m"); // Reset color
 	printf("0%% ");
 	print_seperation_line(WINSIZE_COL - 3);
