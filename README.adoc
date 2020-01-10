@@ -2,19 +2,24 @@
 
 Simple CLI-Tool to show your batteryusage over time.
 
+## Install
+
+  make install
+  
+
+
 ## Execution
 
 To start *monitoring*:
 
 
-  bash deamon.sh
+  ~/.batteryusage/deamon.sh
 
 
 To show the *graph*:
 
 
-  gcc -o bat_plot batteryplot.c
-  ./bat_plot
+  ~/.batteryusage/batteryusage-plot
 
 
 
