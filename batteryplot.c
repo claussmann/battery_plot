@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 // path relative from userhome
-#define filepath ".battery_plot"
+#define filepath ".batteryusage/battery_data"
 
 
 void print_seperation_line(int length){
