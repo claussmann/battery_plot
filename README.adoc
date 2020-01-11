@@ -16,6 +16,12 @@ To start *monitoring*:
   ~/.batteryusage/deamon.sh
 
 
+Alternatively you can add a cronjob to run it on startup:
+
+  crontab -e
+  #Append:
+  */3 * * * *   /home/YOUR_USER/.batteryusage/deamon-cron.sh
+
 To show the *graph*:
 
 
